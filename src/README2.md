@@ -34,6 +34,6 @@
 
 - Further validation and integration are needed for the succeeding tasks the other task.
 
-- AI assistance was used in developing the initial code.( so plss ask me if my problems).
+- AI assistance was used in developing the initial code so some unfamiliar code may show.( so plss ask me if my problems).
 
 >Pwede po ito i promt pagdi na understand ung code i delete din po after.
