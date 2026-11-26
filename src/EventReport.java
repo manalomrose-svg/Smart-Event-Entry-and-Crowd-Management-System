@@ -14,10 +14,21 @@ public class EventReport {
         averageStay = 0;
     }
 
-    public String getEvent() { return event; }
-    public int getNoShows() { return noShows; }
-    public int getPeakHours() { return peakHours; }
-    public int getAverageStay() { return averageStay; }
+    public String getEvent() {
+        return event;
+    }
+
+    public int getNoShows() {
+        return noShows;
+    }
+
+    public int getPeakHours() {
+        return peakHours;
+    }
+
+    public int getAverageStay() {
+        return averageStay;
+    }
 
     public void compile() {
         // TODO: Calculate attendance, no-shows, peak hours and average stay from records.

@@ -11,17 +11,32 @@ public class EntryRecord {
         this.timeIn = LocalDateTime.now();
     }
 
-    public String getGuestName() { return guestName; }
-    public LocalDateTime getTimeIn() { return timeIn; }
-    public LocalDateTime getTimeOut() { return timeOut; }
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public LocalDateTime getTimeIn() {
+        return timeIn;
+    }
+
+    public LocalDateTime getTimeOut() {
+        return timeOut;
+    }
+
     public boolean recordTimeOut() {
-        if (timeOut != null) return false;
+        if (timeOut != null) {
+            return false;
+        }
         timeOut = LocalDateTime.now();
         return true;
     }
+
     // -1 means the guest has not exited yet; otherwise returns whole minutes.
     public long provideStayTime() {
-        if (timeOut == null) return -1;
-        return Duration.between(timeIn, timeOut).toMinutes();
+        if (timeOut == null) {
+            return -1;
+        }
+        Duration stay = Duration.between(timeIn, timeOut);
+        return stay.toMinutes();
     }
 }

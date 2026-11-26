@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.UUID;
 
 public class Reservation {
@@ -8,25 +7,56 @@ public class Reservation {
     private final GuestList guestList;
 
     public Reservation(Customer customer, Event event, GuestList guestList) {
-        this.customer = Objects.requireNonNull(customer);
-        this.event = Objects.requireNonNull(event);
-        this.guestList = Objects.requireNonNull(guestList);
+        if (customer == null) {
+            throw new NullPointerException();
+        }
+        this.customer = customer;
+        if (event == null) {
+            throw new NullPointerException();
+        }
+        this.event = event;
+        if (guestList == null) {
+            throw new NullPointerException();
+        }
+        this.guestList = guestList;
         this.reservationNumber = generateReservationNumber();
     }
 
-    public String generateReservationNumber() { return UUID.randomUUID().toString(); }
-    public String getReservationNumber() { return reservationNumber; }
-    public Customer getCustomer() { return customer; }
-    public Event getEvent() { return event; }
-    public GuestList getGuestList() { return guestList; }
+    public String generateReservationNumber() {
+        UUID id = UUID.randomUUID();
+        return id.toString();
+    }
+
+    public String getReservationNumber() {
+        return reservationNumber;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public GuestList getGuestList() {
+        return guestList;
+    }
 
     public String getReservationDetails() {
         return reservationNumber + " | " + event.getEventType() + " | "
                 + event.getDate() + " " + event.getTime() + " | " + guestList.getGuestCount() + " guests";
     }
+
     public boolean hasValidGuestList() {
-        return guestList.validateGuestCount() && guestList.getGuestCount() == event.getExpectedPopulation();
+        if (!guestList.validateGuestCount()) {
+            return false;
+        }
+        int actualCount = guestList.getGuestCount();
+        int expectedCount = event.getExpectedPopulation();
+        return actualCount == expectedCount;
     }
+
     // TODO: Check availability, validate the guest list, and confirm the booking.
     public boolean confirmReservation() {
         throw new UnsupportedOperationException("Reservation confirmation is pending.");

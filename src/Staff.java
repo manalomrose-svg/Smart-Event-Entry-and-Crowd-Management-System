@@ -9,17 +9,31 @@ public class Staff {
         this.name = name;
     }
 
-    public String getStaffID() { return staffID; }
-    public String getName() { return name; }
-    public String getReservationNumber() { return reservationNumber; }
-    public String getGuestName() { return guestName; }
+    public String getStaffID() {
+        return staffID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getReservationNumber() {
+        return reservationNumber;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
 
     // Store the input; the controller will verify it in the next task.
     public void enterReservationNumber(String number) {
         reservationNumber = number;
         guestName = null;
     }
-    public void enterGuestName(String name) { guestName = name; }
+
+    public void enterGuestName(String name) {
+        guestName = name;
+    }
 
     // TODO: Delegate exit processing to the entry controller.
     public void markGuestExit(Guest guest) {

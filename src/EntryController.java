@@ -1,4 +1,3 @@
-import java.util.Objects;
 
 // Starter class. Complete entry decisions and record collection during integration.
 public class EntryController {
@@ -13,18 +12,44 @@ public class EntryController {
         if (limit < 25 || limit > 50) {
             throw new IllegalArgumentException("Limit must be 25 to 50.");
         }
-        this.staff = Objects.requireNonNull(staff);
-        this.guestList = Objects.requireNonNull(guestList);
-        this.crowdCounter = Objects.requireNonNull(crowdCounter);
+        if (staff == null) {
+            throw new NullPointerException();
+        }
+        this.staff = staff;
+        if (guestList == null) {
+            throw new NullPointerException();
+        }
+        this.guestList = guestList;
+        if (crowdCounter == null) {
+            throw new NullPointerException();
+        }
+        this.crowdCounter = crowdCounter;
         this.limit = limit;
     }
 
-    public Staff getStaff() { return staff; }
-    public GuestList getGuestList() { return guestList; }
-    public CrowdControl getCrowdCounter() { return crowdCounter; }
-    public EntryRecord getEntryRecord() { return entryRecord; }
-    public DeniedEntry getDeniedEntry() { return deniedEntry; }
-    public int getLimit() { return limit; }
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public GuestList getGuestList() {
+        return guestList;
+    }
+
+    public CrowdControl getCrowdCounter() {
+        return crowdCounter;
+    }
+
+    public EntryRecord getEntryRecord() {
+        return entryRecord;
+    }
+
+    public DeniedEntry getDeniedEntry() {
+        return deniedEntry;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
 
     public boolean checkGuestName(String name) {
         return guestList.checkGuestName(name);
@@ -41,6 +66,10 @@ public class EntryController {
     }
 
     public boolean isLimitReached() {
-        return crowdCounter.getCurrentCount() >= limit || crowdCounter.isLimitReached();
+        int count = crowdCounter.getCurrentCount();
+        if (count >= limit) {
+            return true;
+        }
+        return crowdCounter.isLimitReached();
     }
 }

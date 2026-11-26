@@ -13,7 +13,8 @@ public class AvailabilityChecker {
     }
 
     public List<String> getBookedSlots() {
-        return Collections.unmodifiableList(new ArrayList<>(bookedSlots));
+        List<String> copy = new ArrayList<>(bookedSlots);
+        return Collections.unmodifiableList(copy);
     }
 
     public boolean checkAvailability(LocalDate date, LocalTime slot) {

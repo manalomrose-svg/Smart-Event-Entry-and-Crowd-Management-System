@@ -10,9 +10,17 @@ public class CrowdControl {
         alertStatus = "GREEN";
     }
 
-    public int getCurrentCount() { return currentCount; }
-    public int getMaximumCapacity() { return maximumCapacity; }
-    public String getAlertStatus() { return alertStatus; }
+    public int getCurrentCount() {
+        return currentCount;
+    }
+
+    public int getMaximumCapacity() {
+        return maximumCapacity;
+    }
+
+    public String getAlertStatus() {
+        return alertStatus;
+    }
 
     public void addGuest() {
         // TODO: Update the count and alert after an approved entry.
@@ -24,8 +32,13 @@ public class CrowdControl {
         throw new UnsupportedOperationException("Crowd exit update is not implemented yet.");
     }
 
-    public boolean checkCapacity() { return currentCount < maximumCapacity; }
-    public boolean isLimitReached() { return currentCount >= maximumCapacity; }
+    public boolean checkCapacity() {
+        return currentCount < maximumCapacity;
+    }
+
+    public boolean isLimitReached() {
+        return currentCount >= maximumCapacity;
+    }
 
     public void showAlert() {
         // TODO: Define green/yellow/red thresholds with the team.

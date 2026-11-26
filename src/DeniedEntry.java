@@ -15,9 +15,18 @@ public class DeniedEntry {
         this.time = now.toLocalTime();
     }
 
-    public String getName() { return name; }
-    public LocalDate getDate() { return date; }
-    public LocalTime getTime() { return time; }
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getTime() {
+        return time;
+    }
+
     // TODO: Agree on where the collection of denied attempts is stored.
     public void recordDeniedAttempt() {
         throw new UnsupportedOperationException("Denied-entry collection is pending.");
